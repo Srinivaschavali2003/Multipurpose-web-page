@@ -1,5 +1,4 @@
 //jshint esversion:6
-//userschema ki plugin chesinatu migatavatiki kuda cheyala vadha
 require('dotenv').config();
 const express = require("express");
 const ejs = require("ejs");
@@ -28,7 +27,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://sunny:Test123@cluster0.txpui.mongodb.net/sunnywebpageDB",{useNewUrlParser:true, useUnifiedTopology:true,useFindAndModify: false});
+mongoose.connect("mongodb+srv://yelpcamp:yelpcamp@cluster0.qjn3mju.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true,useFindAndModify: false},(err)=>{
+  if(err) console.log(err); 
+  else console.log("Connected to MongoDB") ;
+});
 mongoose.set("useCreateIndex", true);
 
 const itemsSchema = new mongoose.Schema({
@@ -63,9 +65,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://frozen-spire-72274.herokuapp.com/auth/google/sunnywebpage",
+    clientID: "388077320645-5v9kqn4rnulr1t646arcfpu4nljger7q.apps.googleusercontent.com",
+    clientSecret: "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",
+    callbackURL: "http://localhost:3000/auth/google/callback",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
