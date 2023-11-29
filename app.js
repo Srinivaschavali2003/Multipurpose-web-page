@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://yelpcamp:yelpcamp@cluster0.qjn3mju.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true,useFindAndModify: false},(err)=>{
+mongoose.connect("mongodb+srv://multipurpose:multipurpose@cluster0.qjn3mju.mongodb.net/",{useNewUrlParser:true, useUnifiedTopology:true,useFindAndModify: false},(err)=>{
   if(err) console.log(err); 
   else console.log("Connected to MongoDB") ;
 });
